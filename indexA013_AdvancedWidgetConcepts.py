@@ -2,7 +2,6 @@
 Cours : Streamlit Mini Course - Make Websites With ONLY Python
 Lien : https://www.youtube.com/watch?v=o8p7uQCGD0U
 
-Onglets, volet à gauche, cadrage, colonnes séparées, message remplacé...
 
 Date : 03/02/25
 """
