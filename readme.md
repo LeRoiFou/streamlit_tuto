@@ -8,6 +8,7 @@ L'objectif de cette formation est de pouvoir partager facilement les données d'
 **Hiérarchie des tutos :**
 
 - indexA : visualisation d'ensemble des fonctionnalités de streamlit
+- indexB : fonctions avancées
 
 Date : 03/02/2025 <br>
 Editeur : Laurent Reynaud
