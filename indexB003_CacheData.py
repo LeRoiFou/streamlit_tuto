@@ -34,27 +34,44 @@ import streamlit as st
 import pandas as pd
 import time
 
-@st.cache_data(ttl=30) # mise en cache pendant 30 secondes : au-delà non conservation
-def load_data():
-    # Simulation d'un chargement de données long
-    time.sleep(5)
-    df = pd.DataFrame({
-        'A': [1, 2, 3, 4],
-        'B': [10, 20, 30, 40]
-    })
-    return df
+class App:
+    
+    def app(data):
+        
+        st.title("Démonstration de st.cache_data")
 
-st.title("Démonstration de st.cache_data")
+        st.write("Chargement des données...")
+        data = data()
+        st.write("Données chargées !")
 
-st.write("Chargement des données...")
-data = load_data()
-st.write("Données chargées !")
+        st.dataframe(data)
 
-st.dataframe(data)
+        st.button("Recharger la page")
 
-st.button("Recharger la page")
+        # Suppression des données conservées avec l'instruction cache_data
+        if st.button("Effacer toutes les données stockées"):
+            st.cache_data.clear()
+             
 
-# Suppression des données conservées avec l'instruction cache_data
-if st.button("Effacer toutes les données stockées"):
-    st.cache_data.clear()
+if __name__ == '__main__':
+    
+    # Configuration de la page web
+    st.set_page_config(
+        page_title='form',
+        page_icon='😱',
+        layout='centered',
+    )
+    
+    @st.cache_data(ttl=30) # mise en cache pendant 30 secondes : au-delà non conservation
+    def load_data():
+        # Simulation d'un chargement de données long
+        time.sleep(5)
+        df = pd.DataFrame({
+            'A': [1, 2, 3, 4],
+            'B': [10, 20, 30, 40]
+        })
+        return df
+    
+    # Instanciation de la classe ci-avant
+    app = App.app(load_data)
     
